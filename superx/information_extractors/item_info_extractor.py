@@ -12,6 +12,8 @@ from bs4 import BeautifulSoup # pylint: disable=import-error
 import requests # pylint: disable=import-error
 add_to_python_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..')
 sys.path.append(add_to_python_path)
+
+sys.path.append("..")
 from models import Product, BranchPrice # pylint: disable=import-error disable=wrong-import-position
 from run_extractors import session, supermarket_info_dictionary
 
