@@ -12,9 +12,8 @@ from bs4 import BeautifulSoup # pylint: disable=import-error
 import requests # pylint: disable=import-error
 add_to_python_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..')
 sys.path.append(add_to_python_path)
-from app import supermarket_info_dictionary, session # pylint: disable=import-error disable=wrong-import-position
 from models import Product, BranchPrice # pylint: disable=import-error disable=wrong-import-position
-
+from run_extractors import session, supermarket_info_dictionary
 
 logging.basicConfig(filename='info-extractor.log', level=logging.INFO,
                     format='%(asctime)s: %(funcName)s: %(levelname)s: %(message)s')
@@ -39,7 +38,8 @@ class InfoExtractor:
         # list of unwanted names to be filter out
         self.exclude_names = ['משלוחים', 'ריק', 'פיקדון', 'תיבה', 'משלוח']
         self.item_id_set = set()
-
+        
+        
     def run_info_extractor(self):
         """
         This method is incharge of the whole extraction process.

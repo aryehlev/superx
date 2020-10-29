@@ -10,7 +10,7 @@ import logging
 import requests
 from bs4 import BeautifulSoup
 from models import Branch
-from app import supermarket_info_dictionary, session
+from run_extractors import session, supermarket_info_dictionary
 
 add_to_python_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..')
 sys.path.append(add_to_python_path)

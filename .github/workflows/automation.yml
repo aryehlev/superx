@@ -24,13 +24,7 @@ jobs:
         virtualenv venv --python=python3.8
         source venv/bin/activate
         pip3 install flask Flask-SQLAlchemy Flask-Bootstrap SQLAlchemy flask_login flask_wtf pymysql pytest pytest-ordering requests pylint pylint-flask-sqlalchemy bs4
-
-
-    - name: Run flask app
-      run: |
-        source venv/bin/activate  
-        cd superx 
-        flask run 
+ 
     
     - name: Run extractors
       run: |    
