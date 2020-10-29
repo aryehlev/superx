@@ -29,7 +29,7 @@ jobs:
     - name: Run extractors
       run: |    
         source venv/bin/activate
-        cd information_extractors
+        cd superx/information_extractors
         python run_extractors.py
         
 
