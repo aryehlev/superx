@@ -32,6 +32,6 @@ jobs:
         cd superx
         echo what is in the file
         ls
-        python -m information_extractors/run_extractors.py
+        python information_extractors/run_extractors.py
         
 
