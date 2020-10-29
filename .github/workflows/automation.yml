@@ -30,6 +30,6 @@ jobs:
       run: |    
         source venv/bin/activate 
         cd superx
-        python -m information_extractors/run_extractors.py
+        python -m superx/information_extractors/run_extractors.py
         
 
