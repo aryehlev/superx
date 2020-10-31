@@ -32,6 +32,7 @@ jobs:
         cd superx
         echo what is in the file
         ls
+        python app.py
         python run_extractors.py
         
 

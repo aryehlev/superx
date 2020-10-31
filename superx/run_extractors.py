@@ -2,12 +2,13 @@ from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from information_extractors.branch_info_extractor import BranchExtractor
-from information_extractors.ssitem_info_extractor import InfoExtractor
+from information_extractors.item_info_extractor import InfoExtractor
 
 engine = create_engine('mysql+pymysql://Super_User:SuperX1234'
                        '@mysql-13101-0.cloudclusters.net:13101/SuperX',
                        echo=False)
 session = Session(bind=engine)
+
 supermarket_info_dictionary = {'mega': {'store_name': 'mega',
                                         'url': f'http://publishprice.mega.co.il/'
                                                f'{str(datetime.today().strftime("%Y%m%d"))}',
