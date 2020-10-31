@@ -9,7 +9,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 
-app = create_app()
 app = Flask(__name__)
 Bootstrap(app)
 
@@ -118,4 +117,4 @@ from routing import *
 
 
 if __name__ == '__main__':
-    app.run(debug=True,)
+    app.run(debug=True)
