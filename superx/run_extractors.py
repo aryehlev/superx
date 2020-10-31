@@ -1,8 +1,8 @@
 from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
-from branch_info_extractor import BranchExtractor
-from item_info_extractor import InfoExtractor
+from information_extractors.branch_info_extractor import BranchExtractor
+from information_extractors.ssitem_info_extractor import InfoExtractor
 
 engine = create_engine('mysql+pymysql://Super_User:SuperX1234'
                        '@mysql-13101-0.cloudclusters.net:13101/SuperX',
