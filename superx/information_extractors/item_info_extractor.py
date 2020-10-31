@@ -10,12 +10,12 @@ import xml.etree.ElementTree as ET
 from decimal import Decimal
 from bs4 import BeautifulSoup # pylint: disable=import-error
 import requests # pylint: disable=import-error
+from app_for_extractors import app, session, supermarket_info_dictionary
 add_to_python_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..')
 sys.path.append(add_to_python_path)
 
 sys.path.append("..")
 from models import Product, BranchPrice # pylint: disable=import-error disable=wrong-import-position
-from run_extractors import session, supermarket_info_dictionary
 
 logging.basicConfig(filename='info-extractor.log', level=logging.INFO,
                     format='%(asctime)s: %(funcName)s: %(levelname)s: %(message)s')
