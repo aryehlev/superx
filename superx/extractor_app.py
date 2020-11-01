@@ -117,7 +117,7 @@ from routing import *
 
 # manage.py
 
-from flask.ext.script import Manager
+from flask_script import Manager
 
 
 manager = Manager(app)
