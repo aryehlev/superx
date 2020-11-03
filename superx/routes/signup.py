@@ -10,7 +10,7 @@ from wtforms.fields.html5 import EmailField
 from flask import render_template, redirect, url_for, session
 from flask_login import LoginManager, login_required, logout_user, login_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import app, db # pylint: disable=import-error disable=no-name-in-module
+from app import app # pylint: disable=import-error disable=no-name-in-module
 from models import User, Branch # pylint: disable=import-error
 
 
@@ -47,7 +47,7 @@ def city_list():
     '''
     returns a city list for the field in the signup form so the user can pick there city
     '''
-    citys = db.session.query(Branch.city).order_by(Branch.city).distinct().all() #pylint: disable=no-member
+    citys = app.session.query(Branch.city).order_by(Branch.city).distinct().all() #pylint: disable=no-member
     city_list_tuples = []
     for city in citys:
         if city.city is None or city.city == 'unknown':
@@ -115,8 +115,8 @@ def register():
         new_user = User(name=form.username.data,
         email=form.email.data,
         password=hash_password, city=form.city.data)
-        db.session.add(new_user)
-        db.session.commit()
+        app.session.add(new_user)
+        app.session.commit()
         return redirect(url_for('login'))
 
     return render_template('register.jinja2', form=form)

@@ -5,7 +5,7 @@ import from flask and models and db
 
 from flask import render_template, request, session, jsonify
 from models import Branch, BranchPrice, Product
-from app import db, supermarket_info_dictionary as sd
+from app import app, supermarket_info_dictionary as sd
 
 #  The amount of items to show the customer each search
 # (more items = bigger delay from the input to the presentation)
@@ -16,7 +16,7 @@ def home():
     """
     returns landing page of application
     """
-    city_list = db.session.query(Branch.city).order_by(Branch.city).distinct().all()
+    city_list = app.session.query(Branch.city).order_by(Branch.city).distinct().all()
     return render_template('home.html', city_list=city_list,
                            number_of_items_to_show=NUMBER_OF_ITEMS_TO_SHOW)
 
@@ -91,7 +91,7 @@ def livesearch():
     if search_res:
 
         # query all products from DB that contains search_res in their name
-        products_list = db.session.query(Product).order_by(Product.name) \
+        products_list = app.session.query(Product).order_by(Product.name) \
             .filter(Product.name.contains(search_res)).all()
 
         for item_count, item in enumerate(products_list):
@@ -168,5 +168,5 @@ def city_search():
     """
     renders the city list for the user if it wants to cahnge a city from his city
     """
-    city_list = db.session.query(Branch.city).order_by(Branch.city).distinct().all()
+    city_list = app.session.query(Branch.city).order_by(Branch.city).distinct().all()
     return render_template('city_list.html', city_list=city_list)

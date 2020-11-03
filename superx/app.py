@@ -1,15 +1,20 @@
 """
 importing modules
 """
-from os import environ
+
 from datetime import datetime
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+
+from flask import Flask, _app_ctx_stack
+from sqlalchemy.orm import scoped_session
 from flask_bootstrap import Bootstrap
+import models
+from database import SessionLocal, engine
+from os import environ
 
 app = Flask(__name__)
+
+
+
 Bootstrap(app)
 
 app.config.from_object('config.BaseConfig')
@@ -18,17 +23,10 @@ app.config['TESTING'] = False
 FLASK_APP = environ.get('FLASK_APP')
 FLASK_ENV = environ.get('FLASK_ENV')
 
-# Database
-SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
-SQLALCHEMY_ECHO = False
-SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-db = SQLAlchemy(app)
-db.init_app(app)
-engine = create_engine('mysql+pymysql://Super_User:SuperX1234'
-                       '@mysql-13101-0.cloudclusters.net:13101/SuperX',
-                       echo=False)
-session = Session(bind=engine)
+models.Base.metadata.create_all(bind=engine)
+app.session = scoped_session(SessionLocal, scopefunc=_app_ctx_stack.__ident_func__)
+
 
 # dictionary for information extractors
 supermarket_info_dictionary = {'mega': {'store_name': 'mega',
