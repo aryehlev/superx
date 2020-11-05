@@ -27,8 +27,8 @@ class Chain(Base):
 
     id = Column(BigInteger, primary_key=True)
     name = Column(Text)
-    branches = relationship("Branch", backref="chain")
-    prices = relationship("BranchPrice", backref="chain")
+    # branches = relationship("Branch", backref="chain")
+    # prices = relationship("BranchPrice", backref="chain")
 
 
 class Branch(Base):
@@ -45,7 +45,7 @@ class Branch(Base):
     sub_chain_id = Column(Integer)
     chain_id = Column(Integer, ForeignKey("chain.id"))
     UniqueConstraint(id, chain_id)
-    prices = relationship("BranchPrice", backref="branch")
+    # prices = relationship("BranchPrice", backref="branch")
 
 
 class Product(Base):
@@ -59,7 +59,7 @@ class Product(Base):
     quantity = Column(DECIMAL)
     is_weighted = Column(Boolean)
     unit_of_measure = Column(Text)
-    prices = relationship("BranchPrice", backref="product")
+    # prices = relationship("BranchPrice", backref="product")
 
 class BranchPrice(Base):
     '''
