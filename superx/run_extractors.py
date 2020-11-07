@@ -1,4 +1,5 @@
-from information_extractors import InfoExtractor, BranchExtractor
+from information_extractors.item_info_extractor import InfoExtractor
+from information_extractors.branch_info_extractor  import BranchExtractor
 
 i_e = InfoExtractor()
 b_e = BranchExtractor()
