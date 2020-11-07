@@ -2,7 +2,7 @@ name: automation for running extractors
 
 on: 
   push:
-    branches: [ ci ]
+    branches: [ new-ci ]
     
 jobs:
   # Purpose of the process
