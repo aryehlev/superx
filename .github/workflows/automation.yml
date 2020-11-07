@@ -1,39 +1,28 @@
-name: automation for running extractors
-
 on: 
   push:
     branches: [ ci ]
-    
+
+
 jobs:
-  # Purpose of the process
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    # Download superx repo to the runner
     - uses: actions/checkout@v2
-    # Set up Python 3.8
-    - uses: actions/setup-python@v1
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
       with:
         python-version: 3.8
-    
     - name: Install Environment & Dependencies
       run: |
-        pip3 install virtualenv
-        virtualenv venv --python=python3.8
-        source venv/bin/activate
-        pip3 install flask Flask-SQLAlchemy Flask-Bootstrap SQLAlchemy flask_login flask_wtf pymysql pytest pytest-ordering requests pylint pylint-flask-sqlalchemy bs4 
- 
-    
+        pip3 install flask Flask-SQLAlchemy Flask-Bootstrap SQLAlchemy flask_login flask_wtf pymysql pytest pytest-ordering requests pylint bs4 requests
+        export FLASK_APP=superx/app.py
+        export FLASK_ENV=development
     - name: Run extractors
-      run: |    
-        source venv/bin/activate 
-        cd superx
-        echo what is in the file
-        ls
-        python extractor_app.py
-        
+      run: |
+        python ./superx/information_extractors/branch_info_extractor.py
+        python ./superx/information_extractors/item_info_extractor.py
         
         
 
