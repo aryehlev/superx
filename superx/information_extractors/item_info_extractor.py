@@ -325,7 +325,7 @@ class InfoExtractor:
         """
         queries the DB for all rows and saves the unique contraints in a set
         """
-        self.session.query(BranchPrice).all():
+        all_rows = self.session.query(BranchPrice).all()
         # all_rows = BranchPrice.query.all()
 
         for row in all_rows:
