@@ -13,6 +13,6 @@ def test_logout_user(client):
     '''
     with client:
         user = User.query.filter(User.email == 'aryehlevklein@gmail.com').first()
-        client.get('/logout', follow_redirects=True)
+        client.post('/logout', follow_redirects=True)
         assert user.is_authenticated is False
         
