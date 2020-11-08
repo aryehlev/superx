@@ -29,8 +29,6 @@ jobs:
     - name: Run extractors
       run: |    
         source venv/bin/activate 
-        cd superx
-        echo what is in the file
-        ls
-        python run_extractors.py
+        python ./superx/information_extractors/branch_info_extractor.py
+        python ./superx/information_extractors/item_info_extractor.py
         
