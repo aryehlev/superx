@@ -31,8 +31,8 @@ class Chain(db.Model):
 
     id = Column(BigInteger, primary_key=True)
     name = Column(Text)
-    created_time   = Column(TIMESTAMP, nullable=False, server_default=func.now())
-    updated_time   = Column(TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+    created_time   = Column(db.TIMESTAMP, nullable=False, server_default=func.now())
+    updated_time   = Column(db.TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
 
 
 class Branch(db.Model):
@@ -46,8 +46,8 @@ class Branch(db.Model):
     name = Column(Text)
     address = Column(Text)
     city = Column(Text)
-    created_time   = Column(TIMESTAMP, nullable=False, server_default=func.now())
-    updated_time   = Column(TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+    created_time   = Column(db.TIMESTAMP, nullable=False, server_default=func.now())
+    updated_time   = Column(db.TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     sub_chain_id = Column(Integer)
     chain_id = Column(db.ForeignKey('chain.id'))
     UniqueConstraint(id, chain_id)
@@ -60,8 +60,8 @@ class Product(db.Model):
     __tablename__ = 'product'
 
     id = Column(BigInteger, primary_key=True)
-    created_time   = Column(TIMESTAMP, nullable=False, server_default=func.now())
-    updated_time   = Column(TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+    created_time   = Column(db.TIMESTAMP, nullable=False, server_default=func.now())
+    updated_time   = Column(db.TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     name = Column(Text)
     quantity = Column(DECIMAL)
     is_weighted = Column(Boolean)
@@ -77,8 +77,8 @@ class BranchPrice(db.Model):
 
     branch_price_id = Column(Integer, primary_key=True, autoincrement=True)
     chain_id = Column(db.ForeignKey('chain.id'))
-    created_time   = Column(TIMESTAMP, nullable=False, server_default=func.now())
-    updated_time   = Column(TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+    created_time   = Column(db.TIMESTAMP, nullable=False, server_default=func.now())
+    updated_time   = Column(db.TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     item_code = Column(db.ForeignKey('product.id'))
     branch_id = Column(db.ForeignKey('branch.id'))
     price = Column(DECIMAL)
