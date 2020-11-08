@@ -91,9 +91,6 @@ def livesearch():
 
     products = []
     search_res = request.form.get("input").strip()
-    if not 'branches_data' in session:
-        return jsonify({'was_city_chosen': 'false'})
-
     branches_code_list = session['branches_data']
 
     # if search_res is empty string, skip and return empty products list

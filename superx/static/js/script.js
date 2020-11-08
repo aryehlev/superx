@@ -94,13 +94,6 @@ $(document).ready(function(e) {
             $('#tbody').append(res);
         }
       })
-      
-      req.done(function(data){
-        if (!data['was_city_chosen'])
-        {
-          alert("please choose a city");
-        }
-      })
     }
 });
 
