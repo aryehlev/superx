@@ -186,7 +186,7 @@ class BranchExtractor:
         """
         queries the DB for all rows and saves the unique contraints in a set
         """
-        all_rows = self.session.query(Branch).all():
+        all_rows = self.session.query(Branch).all()
     
         for row in all_rows:
             self.branch_unique_constraint_set.add((row.id, row.chain_id))
