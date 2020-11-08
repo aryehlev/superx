@@ -90,8 +90,15 @@ $(document).ready(function(e) {
         method: "POST",
         data: {input: $("#myInput").val()},
         success: function (res) {
-          $('#tbody').empty();
-          $('#tbody').append(res);
+            $('#tbody').empty();
+            $('#tbody').append(res);
+        }
+      })
+      
+      req.done(function(data){
+        if (!data['was_city_chosen'])
+        {
+          alert("please choose a city");
         }
       })
     }
