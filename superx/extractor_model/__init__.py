@@ -114,5 +114,3 @@ class BasketProduct(db.Model):
     basket = db.relationship('Basket',
                     primaryjoin='BasketProduct.basket_id == Basket.id',
                             uselist=False)
-
-db.create_all()
