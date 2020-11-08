@@ -1,8 +1,8 @@
 name: CI for Pull Request
 
 on: 
-  pull_request:
-    branches: [ master ]
+  push:
+    branches: [ tests ]
     
 jobs:
   # Purpose of the process

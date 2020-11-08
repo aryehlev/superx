@@ -5,7 +5,7 @@ import pytest
 from flask import session
 
 
-@pytest.mark.run(order=5)
+@pytest.mark.run(order=6)
 def test_update_item(client):
     """
     tests changing amount of item in cart

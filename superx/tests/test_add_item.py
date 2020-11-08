@@ -5,7 +5,7 @@ import pytest
 from flask import session
 
 
-@pytest.mark.run(order=4)
+@pytest.mark.run(order=5)
 def test_add_item(client):
     """
     tests adding item to comparing cart
