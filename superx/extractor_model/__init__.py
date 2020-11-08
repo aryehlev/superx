@@ -3,7 +3,7 @@ imports of sql-alchemy and flask login modules
 '''
 from sqlalchemy import Integer, Column, Text, Boolean, BigInteger, DECIMAL, UniqueConstraint
 from flask_login import LoginManager, UserMixin
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, text
 from active_alchemy import ActiveAlchemy
 
 db = ActiveAlchemy("mysql+pymysql://Super_User:SuperX1234@mysql-13101-0.cloudclusters.net:13101/SuperX")
@@ -21,7 +21,7 @@ class User(UserMixin, db.Model):
     password = Column(db.String(80))
     city = Column(db.String(80))
     created_time   = Column(db.TIMESTAMP, nullable=False, server_default=func.now())
-    updated_time   = Column(db.TIMESTAMP, nullable=False, server_default=Text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+    updated_time   = Column(db.TIMESTAMP, nullable=False, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
 
 class Chain(db.Model):
     '''
